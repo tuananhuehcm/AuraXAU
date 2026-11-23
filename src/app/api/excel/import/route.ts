@@ -1,4 +1,4 @@
-import ExcelJS from "exceljs";
+import { readXlsx } from "@/lib/read-xlsx";
 import { requireOwner, apiError } from "@/lib/access";
 import { readWorkspace } from "@/lib/store";
 import { validateData } from "@/lib/validation";
@@ -20,8 +20,7 @@ export async function POST(req: Request) {
       await requireOwner(req);
       current = (await readWorkspace()).data;
     }
-    const w = new ExcelJS.Workbook();
-    await w.xlsx.load(await file.arrayBuffer());
+    const w = await readXlsx(await file.arrayBuffer());
     return Response.json(mergeWorkbook(w, current));
   } catch (e) {
     return apiError(e);

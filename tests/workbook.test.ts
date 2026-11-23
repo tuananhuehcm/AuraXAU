@@ -1,6 +1,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import ExcelJS from "exceljs";
+import JSZip from "jszip";
+import { readXlsx } from "../src/lib/read-xlsx";
 import { sampleData } from "../src/lib/data";
 import {
   createWorkbook,
@@ -66,4 +68,23 @@ test("retry after a Sheet push failure does not duplicate newly allocated blank-
   const retry = mergeWorkbook(w, first.data, undefined, "sheet-123");
   assert.equal(retry.added, 0);
   assert.equal(retry.data.trades.length, 5);
+});
+test("imports workbooks with unsupported absolute comment targets without altering inputs", async () => {
+  const w = await createWorkbook(sampleData()),
+    zip = await JSZip.loadAsync(await w.xlsx.writeBuffer());
+  zip.file(
+    "xl/worksheets/_rels/sheet3.xml.rels",
+    '<?xml version="1.0"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/comments" Target="/xl/comments/missing.xml" Id="rId1"/></Relationships>',
+  );
+  const parsed = await readXlsx(
+    await zip.generateAsync({ type: "arraybuffer" }),
+  );
+  assert.equal(parsed.getWorksheet("Trades")!.getCell("L6").value, 15);
+});
+test("rejects oversized inflated XLSX payload before decompression", async () => {
+  const w = await createWorkbook(sampleData()),
+    bytes = Buffer.from(await w.xlsx.writeBuffer());
+  const central = bytes.indexOf(Buffer.from([0x50, 0x4b, 0x01, 0x02]));
+  bytes.writeUInt32LE(100_000_000, central + 24);
+  await assert.rejects(() => readXlsx(bytes), /64 MB/);
 });

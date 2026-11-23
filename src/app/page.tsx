@@ -5,7 +5,8 @@ export default async function Page() {
   const configured = authConfigured() && !!process.env.DATABASE_URL;
   const session = configured ? await auth() : null;
   if (
-    session?.user?.email?.toLowerCase() ===
+    session?.user?.email &&
+    session.user.email.toLowerCase() ===
     process.env.ALLOWED_EMAIL?.toLowerCase()
   )
     return <Dashboard mode="cloud" email={session!.user!.email!} />;

@@ -1,0 +1,15 @@
+node_modules/
+.npm-cache/
+.next/
+out/
+.env*
+!.env.example
+.vercel/
+*.tsbuildinfo
+test-results/
+playwright-report/
+.qa/
+src/generated/
+AuraGold*.html
+AuraGold*.xlsx
+AuraGold*.md

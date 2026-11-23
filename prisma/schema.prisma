@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Input records are preserved losslessly as validated JSON. Computed metrics never persist.
+model Workspace {
+  id        String   @id @default("personal")
+  revision  Int      @default(0)
+  general   Json
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id        String    @id
+  data      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([deletedAt])
+}
+
+model Instrument {
+  id        String    @id
+  data      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Phase {
+  id        String    @id
+  accountId String
+  data      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([accountId])
+}
+
+model Botcamp {
+  id        String    @id
+  accountId String
+  data      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([accountId])
+}
+
+model FxRate {
+  id        String    @id
+  data      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model RoundingStep {
+  id        String    @id
+  data      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model SessionRule {
+  id        String    @id
+  data      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Setup {
+  id        String    @id
+  data      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Trade {
+  id        String    @id
+  accountId String
+  data      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([accountId, deletedAt])
+}
+
+model Cashflow {
+  id        String    @id
+  accountId String
+  data      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@index([accountId, deletedAt])
+}
+
+model DayJournal {
+  id        String    @id
+  data      Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model SheetSync {
+  id        String   @id
+  baseline  Json
+  updatedAt DateTime @updatedAt
+}
+
+model SyncLog {
+  id        String   @id @default(cuid())
+  summary   String
+  createdAt DateTime @default(now())
+}

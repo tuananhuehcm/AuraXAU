@@ -1,0 +1,369 @@
+{
+  "general": {
+    "cutFX": 5,
+    "cutStock": 0,
+    "lang": "vi",
+    "theme": "light",
+    "sheetUrl": ""
+  },
+  "accounts": [
+    {
+      "id": "ACC01",
+      "name": "Vàng chính",
+      "market": "XAUUSD",
+      "broker": "Broker A",
+      "cur": "USD",
+      "symbol": "XAUUSD",
+      "start": 200,
+      "target": 100000,
+      "startDate": "2026-11-23",
+      "risk": 0.03,
+      "dayLimit": 0.1,
+      "descale": 0.1,
+      "round": true,
+      "status": "Đang chạy"
+    },
+    {
+      "id": "ACC02",
+      "name": "Chứng khoán VN",
+      "market": "STOCK_VN",
+      "broker": "CTCK B",
+      "cur": "VND",
+      "symbol": "DEFAULT_STOCK_VN",
+      "start": 100000000,
+      "target": 1000000000,
+      "startDate": "2026-11-20",
+      "risk": 0.01,
+      "dayLimit": 0.03,
+      "descale": 0.1,
+      "round": true,
+      "status": "Đang chạy"
+    }
+  ],
+  "instruments": [
+    {
+      "sym": "XAUUSD",
+      "market": "XAUUSD",
+      "cur": "USD",
+      "tick": 0.1,
+      "tickVal": 10,
+      "minLot": 0.01,
+      "lotStep": 0.01,
+      "note": "1.00 lot = 100 USD / 1 giá"
+    },
+    {
+      "sym": "EURUSD",
+      "market": "FX",
+      "cur": "USD",
+      "tick": 0.0001,
+      "tickVal": 10,
+      "minLot": 0.01,
+      "lotStep": 0.01,
+      "note": "pip $10/lot"
+    },
+    {
+      "sym": "GBPJPY",
+      "market": "FX",
+      "cur": "USD",
+      "tick": 0.01,
+      "tickVal": 6.5,
+      "minLot": 0.01,
+      "lotStep": 0.01,
+      "note": "Tỷ giá chéo: nhập tay giá trị pip"
+    },
+    {
+      "sym": "DEFAULT_STOCK_VN",
+      "market": "STOCK_VN",
+      "cur": "VND",
+      "tick": 1,
+      "tickVal": 1,
+      "minLot": 100,
+      "lotStep": 100,
+      "note": "Mọi mã CK VN, lô 100"
+    }
+  ],
+  "phases": [
+    {
+      "acc": "ACC01",
+      "no": 1,
+      "name": "Tăng tốc",
+      "from": 0,
+      "pct": 0.25,
+      "rmin": 0.02,
+      "rmax": 0.05
+    },
+    {
+      "acc": "ACC01",
+      "no": 2,
+      "name": "Tăng trưởng",
+      "from": 1000,
+      "pct": 0.15,
+      "rmin": 0.02,
+      "rmax": 0.03
+    },
+    {
+      "acc": "ACC01",
+      "no": 3,
+      "name": "Mở rộng",
+      "from": 5000,
+      "pct": 0.1,
+      "rmin": 0.01,
+      "rmax": 0.02
+    },
+    {
+      "acc": "ACC01",
+      "no": 4,
+      "name": "Bảo toàn",
+      "from": 40000,
+      "pct": 0.08,
+      "rmin": 0.005,
+      "rmax": 0.01
+    },
+    {
+      "acc": "ACC02",
+      "no": 1,
+      "name": "Tăng trưởng",
+      "from": 0,
+      "pct": 0.1,
+      "rmin": 0.005,
+      "rmax": 0.01
+    }
+  ],
+  "botcamps": [
+    {
+      "acc": "ACC01",
+      "no": 1,
+      "level": 1000,
+      "type": "Cố định",
+      "value": 200
+    },
+    {
+      "acc": "ACC01",
+      "no": 2,
+      "level": 2500,
+      "type": "Cố định",
+      "value": 500
+    },
+    {
+      "acc": "ACC01",
+      "no": 3,
+      "level": 10000,
+      "type": "Cố định",
+      "value": 2000
+    },
+    {
+      "acc": "ACC01",
+      "no": 4,
+      "level": 50000,
+      "type": "Cố định",
+      "value": 5000
+    },
+    {
+      "acc": "ACC02",
+      "no": 1,
+      "level": 300000000,
+      "type": "% lãi",
+      "value": 0.3
+    }
+  ],
+  "rates": [
+    {
+      "date": "2026-01-01",
+      "rate": 26000
+    }
+  ],
+  "rounding": [
+    {
+      "cur": "USD",
+      "from": 0,
+      "step": 10
+    },
+    {
+      "cur": "USD",
+      "from": 1000,
+      "step": 50
+    },
+    {
+      "cur": "USD",
+      "from": 5000,
+      "step": 100
+    },
+    {
+      "cur": "USD",
+      "from": 20000,
+      "step": 500
+    },
+    {
+      "cur": "USD",
+      "from": 50000,
+      "step": 1000
+    },
+    {
+      "cur": "VND",
+      "from": 0,
+      "step": 1000000
+    },
+    {
+      "cur": "VND",
+      "from": 200000000,
+      "step": 5000000
+    },
+    {
+      "cur": "VND",
+      "from": 500000000,
+      "step": 10000000
+    }
+  ],
+  "sessFX": [
+    {
+      "t": 0,
+      "n": "Á"
+    },
+    {
+      "t": 3,
+      "n": "Âu"
+    },
+    {
+      "t": 8,
+      "n": "Mỹ"
+    },
+    {
+      "t": 17,
+      "n": "Á"
+    }
+  ],
+  "sessStock": [
+    {
+      "t": 0,
+      "n": "Ngoài giờ"
+    },
+    {
+      "t": 9,
+      "n": "ATO"
+    },
+    {
+      "t": 9.25,
+      "n": "Liên tục"
+    },
+    {
+      "t": 11.5,
+      "n": "Nghỉ trưa"
+    },
+    {
+      "t": 13,
+      "n": "Liên tục"
+    },
+    {
+      "t": 14.5,
+      "n": "ATC"
+    },
+    {
+      "t": 14.75,
+      "n": "Ngoài giờ"
+    }
+  ],
+  "setups": [
+    "Quét thanh khoản",
+    "Hồi về vùng cung/cầu",
+    "Phá vỡ cấu trúc",
+    "Tin tức",
+    "Khác"
+  ],
+  "trades": [
+    {
+      "id": "T000001",
+      "acc": "ACC01",
+      "sym": "XAUUSD",
+      "open": "2026-11-23T15:10",
+      "close": "2026-11-23T17:40",
+      "side": "Buy",
+      "vol": 0.01,
+      "entry": 4050,
+      "sl": 4044,
+      "tp": 4065,
+      "exit": 4065,
+      "gross": 15,
+      "fee": 0,
+      "swap": 0,
+      "tax": 0,
+      "setup": "Quét thanh khoản",
+      "disc": 5,
+      "emo": "Bình tĩnh",
+      "note": "Quét thanh khoản phiên Âu, entry H1 chuẩn cấu trúc"
+    },
+    {
+      "id": "T000002",
+      "acc": "ACC01",
+      "sym": "XAUUSD",
+      "open": "2026-11-24T20:35",
+      "close": "2026-11-24T20:50",
+      "side": "Sell",
+      "vol": 0.01,
+      "entry": 4070,
+      "sl": 4078,
+      "tp": 4050,
+      "exit": 4078,
+      "gross": -8,
+      "fee": 0,
+      "swap": 0,
+      "tax": 0,
+      "setup": "Tin tức",
+      "disc": 4,
+      "emo": "Hơi vội",
+      "note": "Tin Mỹ giật râu quét SL, tuân thủ đúng 0.01 lot"
+    },
+    {
+      "id": "T000003",
+      "acc": "ACC01",
+      "sym": "XAUUSD",
+      "open": "2026-11-25T16:05",
+      "close": "2026-11-25T22:30",
+      "side": "Buy",
+      "vol": 0.01,
+      "entry": 4040,
+      "sl": 4035,
+      "tp": 4055,
+      "exit": 4055,
+      "gross": 15,
+      "fee": 0,
+      "swap": 0,
+      "tax": 0,
+      "setup": "Hồi về vùng cung/cầu",
+      "disc": 5,
+      "emo": "Tự tin",
+      "note": "Bắt nhịp hồi vùng cầu H4, chốt đủ R:R 1:3"
+    },
+    {
+      "id": "S000001",
+      "acc": "ACC02",
+      "sym": "FPT",
+      "open": "2026-11-20T09:30",
+      "close": "2026-11-24T10:15",
+      "side": "Buy",
+      "vol": 200,
+      "entry": 120000,
+      "sl": 115000,
+      "tp": 130000,
+      "exit": 126000,
+      "gross": 1200000,
+      "fee": 73800,
+      "swap": 0,
+      "tax": 25200,
+      "setup": "Phá vỡ cấu trúc",
+      "disc": 4,
+      "emo": "Kiên nhẫn",
+      "note": "Phí 0.15% hai chiều, thuế bán 0.1%"
+    }
+  ],
+  "cashflows": [
+    {
+      "id": "CF000001",
+      "acc": "ACC02",
+      "time": "2026-11-25T08:30",
+      "type": "Nạp",
+      "amount": 20000000,
+      "note": "Nạp thêm vốn (ví dụ)"
+    }
+  ],
+  "dayNotes": {}
+}

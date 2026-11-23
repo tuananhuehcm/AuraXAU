@@ -1,0 +1,32 @@
+{
+  "id": "/",
+  "name": "AuraGold 100K",
+  "short_name": "AuraGold",
+  "description": "Nhật ký giao dịch và quản trị tăng trưởng vốn cá nhân",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F6F5F1",
+  "theme_color": "#C9A227",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

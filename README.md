@@ -26,7 +26,7 @@ npm run dev
 node --env-file=.env.local node_modules/prisma/build/index.js migrate deploy
 ```
 
-`npm run db:migrate` dùng DATABASE_URL từ môi trường terminal. Migration không chạy tự động khi build production.
+`npm run db:migrate` dùng biến môi trường terminal; ưu tiên DATABASE_URL_UNPOOLED cho migration, DATABASE_URL cho ứng dụng. Build production trên Vercel tự áp dụng migration đang chờ trước khi build. Build local/Preview không chạy migration.
 
 ## Google OAuth
 
